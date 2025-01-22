@@ -1,3 +1,5 @@
+let cities = [];
+
 // JSON fetch
 async function loadCities() {
     try {
@@ -13,43 +15,41 @@ async function loadCities() {
   }
   
   // Našeptávač
-  function updateSuggestions(suggestions, input) {
+  function updateSuggestions(inputValue) {
     const suggestionBox = document.querySelector('#suggestions');
     suggestionBox.innerHTML = '';
   
-    const filteredCities = suggestions.filter(city =>
-      city.name.toLowerCase().includes(input.toLowerCase())
-    );
+    if (inputValue.trim() === '') return; // Pokud je vstup prázdný, nic nezobrazujeme
+  
+    const filteredCities = cities
+      .filter(city => city.name.toLowerCase().includes(inputValue.toLowerCase()))
+      .slice(0, 10); // Omezení na 10 návrhů
   
     filteredCities.forEach(city => {
-      const li = document.createElement('li');
-      li.textContent = city.name;
-      li.addEventListener('click', () => {
-        document.querySelector('#city-input').value = city.name;
-        suggestionBox.innerHTML = '';
-        updateWeather(city.name);
+        const li = document.createElement('li');
+        li.textContent = `${city.name}, ${city.country}`;
+        li.addEventListener('click', () => {
+          document.querySelector('#city-input').value = city.name;
+          suggestionBox.innerHTML = '';
+          updateWeather(city);
+        });
+        suggestionBox.appendChild(li);
       });
-      suggestionBox.appendChild(li);
-    });
-  }
+    }
   
   function updateWeather(city) {
     const selectedCity = document.querySelector('#selected-city');
-    selectedCity.textContent = city;
-    console.log(`Zobrazuji předpověď pro město: ${city}`);
+    selectedCity.textContent = `${city.name}, ${city.country}`;
+    console.log(`Zobrazuji předpověď pro město: ${city.name}, ${city.country}`);
   }
   
   async function initApp() {
-    const cities = await loadCities();
+    cities = await loadCities();
     const cityInput = document.querySelector('#city-input');
   
     cityInput.addEventListener('input', () => {
       const inputValue = cityInput.value;
-      if (inputValue.trim() !== '') {
-        updateSuggestions(cities, inputValue);
-      } else {
-        document.querySelector('#suggestions').innerHTML = '';
-      }
+        updateSuggestions(cityInput.value);
     });
   }
   
