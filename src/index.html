@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Počasí</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <h1>Předpověď počasí</h1>
+    <div id="search-container">
+      <input 
+        type="text" 
+        id="city-input" 
+        placeholder="Vyhledej město..." 
+        autocomplete="off"
+      />
+      <ul id="suggestions"></ul>
+    </div>
+  </header>
+  
+  <main>
+    <section id="weather-info">
+      <h2>Vybrané město: <span id="selected-city">---</span></h2>
+      <table id="forecast-table">
+        <thead>
+          <tr>
+            <th>Den</th>
+            <th>Teplota</th>
+            <th>Popis</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td colspan="3">Vyberte město pro zobrazení předpovědi.</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+  </main>
+  
+  <footer>
+    <p>&copy; 2025 Martin Kaprál</p>
+  </footer>
+  
+  <script src="script.js" type="module"></script>
+</body>
+</html>
