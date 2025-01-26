@@ -25,10 +25,14 @@ cd weatherapp
 
 ## Technologies Used
 - HTML5: Provides the structure of the app
-- CSS3: Handles the styling and layout of the app
+- CSS3 (generated from SCSS): Handles the styling and layout of the app
 - ES6 (Vanilla Javascript): Core application logic and interaction with the DOM
 - REST API: Fetches weather data from OpenWeatherMap
 - JSON: Provides the dataset for the autocomplete feature
+
+## Notes on Styling
+The project uses SCSS (Sassy CSS) for styling during development. However, the browser uses the precompiled `style.css`, which is already included in the repository.  
+You don't need to compile SCSS yourself. The `style.css` file provided in the project is fully functional and will work out of the box.
 
 ## Project Structure
 
@@ -37,6 +41,7 @@ cd weatherapp
     ├── index.html
     ├── script.js
     ├── style.css
+    ├── style.scss
     └── /data  
         └── cities.json
 </pre>

@@ -3,17 +3,19 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Počasí</title>
+  <title>WeatherApp</title>
+  <link rel="icon" type="image/png" href="https://openweathermap.org/img/wn/10d@2x.png">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
+  <div class="container">
   <header>
-    <h1>Předpověď počasí</h1>
+    <h1>Weather Forecast</h1>
     <div id="search-container">
       <input 
         type="text" 
         id="city-input" 
-        placeholder="Vyhledej město..." 
+        placeholder="Search city..." 
         autocomplete="off"
       />
       <ul id="suggestions"></ul>
@@ -22,7 +24,7 @@
   
   <main>
     <section id="weather-info">
-      <h2>Vybrané město: <span id="selected-city">---</span></h2>
+      <h2>Selected city: <span id="selected-city">None</span></h2>
       <table id="forecast-table">
       </table>
     </section>
@@ -33,5 +35,6 @@
   </footer>
   
   <script src="script.js" type="module"></script>
+</div>
 </body>
 </html>
